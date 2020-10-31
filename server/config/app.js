@@ -19,15 +19,15 @@ dbConnection.once('open', ()=>{
 });
 
 dbConnection.once('connected', ()=>{
-  console.log('MondoDB CONNECTED...');
+  console.log('MongoDB CONNECTED...');
 });
 
 dbConnection.on('disconnected', ()=>{
-  console.log('Connection with MondoDB CLOSED...');
+  console.log('Connection with MongoDB CLOSED...');
 });
 
 dbConnection.on('reconnected', ()=>{
-  console.log('Connection with MondoDB REOPEN...');
+  console.log('Connection with MongoDB REOPEN...');
 });
 
 
@@ -47,7 +47,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../../client')));
-
+app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 // route redirects
 app.use('/', index);
@@ -67,7 +67,9 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', {
+    title: 'Error'
+  });
 });
 
 module.exports = app;
