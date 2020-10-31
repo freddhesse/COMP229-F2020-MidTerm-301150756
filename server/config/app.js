@@ -7,10 +7,11 @@ let logger = require('morgan');
 
 // import "mongoose" - required for DB Access
 let mongoose = require('mongoose');
-// URI
+// URL Request
 let DB = require('./db');
 
-mongoose.connect(process.env.URI || DB.URI, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(DB.URL, {useNewUrlParser: true, useUnifiedTopology: true})
+let dbConnection = mongoose.connection; 
 
 let mongoDB = mongoose.connection;
 mongoDB.on('error', console.error.bind(console, 'Connection Error:'));

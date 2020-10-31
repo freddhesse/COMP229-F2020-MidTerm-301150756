@@ -38,7 +38,7 @@ res.render('../views/books/details', { title: 'Add New Book', books: book });
 
 // POST process the Book Details page and create a new Book - CREATE
 router.post('/add', (req, res, next) => {
-  //define info
+  //define object info
   let book = book({
     "Title": req.body.title,
     "Price": req.body.author,
