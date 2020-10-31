@@ -7,16 +7,27 @@ let logger = require('morgan');
 
 // import "mongoose" - required for DB Access
 let mongoose = require('mongoose');
-// URL Request
+// URI
 let DB = require('./db');
 
 mongoose.connect(DB.URL, {useNewUrlParser: true, useUnifiedTopology: true})
-let dbConnection = mongoose.connection; 
+let dbConnection = mongoose.connection; // alias
 
-let mongoDB = mongoose.connection;
-mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
-mongoDB.once('open', ()=> {
-  console.log("Connected to MongoDB...");
+dbConnection.on('error', console.error.bind(console, 'Connection Error:'));
+dbConnection.once('open', ()=>{
+  console.log('Connection OPEN...');
+});
+
+dbConnection.once('connected', ()=>{
+  console.log('MondoDB CONNECTED...');
+});
+
+dbConnection.on('disconnected', ()=>{
+  console.log('Connection with MondoDB CLOSED...');
+});
+
+dbConnection.on('reconnected', ()=>{
+  console.log('Connection with MondoDB REOPEN...');
 });
 
 
