@@ -1,1 +1,1 @@
-module.exports.URL = "mongodb+srv://fhesse:GmbMniVoPzrmGgz3@comp229books.fe9nw.mongodb.net/Books?retryWrites=true&w=majority";
+module.exports.URL = "mongodb+srv://fhesse:wqnqoIUPOpHCaRsT@comp229books.fe9nw.mongodb.net/Books?retryWrites=true&w=majority";
